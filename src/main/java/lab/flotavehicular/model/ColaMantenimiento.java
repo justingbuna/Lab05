@@ -1,18 +1,21 @@
 package lab.flotavehicular.model;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Queue;
 
 public class ColaMantenimiento<T extends Vehiculo> {
-    private Queue<T> filaDeEspera;
+    private final Queue<T> filaDeEspera;
 
     public ColaMantenimiento() {
         this.filaDeEspera = new LinkedList<>();
     }
 
     public void encolar(T vehiculo) {
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
+
         if (vehiculo.getEstado() == EstadoVehiculo.TALLER) {
             throw new IllegalStateException(
                     "El vehículo ya se encuentra en mantenimiento."
@@ -38,8 +41,20 @@ public class ColaMantenimiento<T extends Vehiculo> {
 
         T vehiculoAtendido = filaDeEspera.poll();
         vehiculoAtendido.setEstado(EstadoVehiculo.DISPONIBLE);
-
         return vehiculoAtendido;
+    }
+
+    /**
+     * Vuelve a colocar en la cola un vehículo cargado desde persistencia
+     * que ya estaba marcado como TALLER.
+     */
+    public void restaurarPendiente(T vehiculo) {
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
+
+        if (vehiculo.getEstado() == EstadoVehiculo.TALLER
+                && !filaDeEspera.contains(vehiculo)) {
+            filaDeEspera.offer(vehiculo);
+        }
     }
 
     public boolean estaVacia() {

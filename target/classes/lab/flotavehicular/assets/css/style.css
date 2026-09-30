@@ -1,0 +1,108 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #F4F7FA;
+}
+
+.titulo-principal {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F3A5F;
+}
+
+.subtitulo {
+    -fx-font-size: 14px;
+    -fx-text-fill: #5F6B7A;
+}
+
+.titulo-seccion {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #234E70;
+}
+
+.tarjeta {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #D9E2EC;
+    -fx-padding: 18;
+}
+
+.text-field,
+.combo-box {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #C9D3DD;
+    -fx-background-color: white;
+}
+
+.text-field:focused,
+.combo-box:focused {
+    -fx-border-color: #2F80ED;
+    -fx-border-width: 1.5;
+}
+
+.button {
+    -fx-background-radius: 7;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 7 14 7 14;
+}
+
+.boton-registrar {
+    -fx-background-color: #2D9CDB;
+    -fx-text-fill: white;
+}
+
+.boton-editar {
+    -fx-background-color: #F2C94C;
+    -fx-text-fill: #333333;
+}
+
+.boton-eliminar {
+    -fx-background-color: #EB5757;
+    -fx-text-fill: white;
+}
+
+.boton-limpiar {
+    -fx-background-color: #E0E6ED;
+    -fx-text-fill: #333333;
+}
+
+.boton-ruta {
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+}
+
+.boton-finalizar {
+    -fx-background-color: #F2994A;
+    -fx-text-fill: white;
+}
+
+.boton-mantenimiento {
+    -fx-background-color: #6C63FF;
+    -fx-text-fill: white;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #D9E2EC;
+    -fx-border-radius: 8;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1F3A5F;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.estado-mantenimiento {
+    -fx-background-color: #E8F1FA;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12 8 12;
+    -fx-text-fill: #1F3A5F;
+    -fx-font-weight: bold;
+}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Flota {
-    private List<Vehiculo> vehiculos;
+    private final List<Vehiculo> vehiculos;
 
     public Flota() {
         this.vehiculos = new ArrayList<>();

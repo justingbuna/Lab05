@@ -19,6 +19,10 @@ public class VehiculoElectrico extends Vehiculo {
         return porcentajeBateria;
     }
 
+    public int getCiclosDeCarga() {
+        return ciclosDeCarga;
+    }
+
     @Override
     public void iniciarRuta() {
         if (estado == EstadoVehiculo.EN_RUTA) {

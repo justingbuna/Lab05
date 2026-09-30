@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="590.0" prefWidth="760.0" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.flotavehicular.controller.FlotaController">
+    <children>
+        <AnchorPane prefHeight="590.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
+            <children>
+                <HBox layoutX="18.0" layoutY="14.0" prefHeight="78.0" prefWidth="724.0" spacing="12.0">
+                    <children>
+                        <ImageView fitHeight="76.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/images/flota.png" />
+                            </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="620.0">
+                            <children>
+                                <Label styleClass="titulo-principal" text="Gestión de flota vehicular" />
+                                <Label styleClass="subtitulo" text="Administración y operaciones de la flota" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <VBox layoutX="18.0" layoutY="106.0" prefHeight="264.0" prefWidth="350.0" styleClass="tarjeta">
+                    <children>
+                        <Label styleClass="titulo-seccion" text="Datos del vehículo" />
+                        <GridPane hgap="10.0" prefHeight="245.0" prefWidth="309.0" vgap="5.0">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="110.0" prefWidth="120.0" />
+                                <ColumnConstraints minWidth="170.0" prefWidth="185.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                                <RowConstraints minHeight="28.0" prefHeight="30.0" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Placa" />
+                                <Label text="Marca" GridPane.rowIndex="1" />
+                                <Label text="Kilometraje" GridPane.rowIndex="2" />
+                                <Label text="Tipo de vehículo" GridPane.rowIndex="3" />
+                                <Label fx:id="lblCombustible" text="Combustible (%)" GridPane.rowIndex="4" />
+                                <Label fx:id="lblBateria" text="Batería (%)" GridPane.rowIndex="5" />
+                                <Label fx:id="lblTonelaje" text="Tonelaje máximo" GridPane.rowIndex="6" />
+                                <Label fx:id="lblTipoCarga" text="Tipo de carga" GridPane.rowIndex="7" />
+
+                                <TextField fx:id="txtPlaca" promptText="Ej. ABC-123" GridPane.columnIndex="1" />
+                                <TextField fx:id="txtMarca" promptText="Ej. Toyota" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField fx:id="txtKilometraje" promptText="Ej. 25000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <ComboBox fx:id="cbxTipoVehiculo" onAction="#cambiarTipoVehiculo" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <TextField fx:id="txtCombustible" promptText="0 - 100" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <TextField fx:id="txtBateria" promptText="0 - 100" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <TextField fx:id="txtTonelaje" promptText="Ej. 20" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                <ComboBox fx:id="cbxTipoCarga" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+
+                <VBox layoutX="384.0" layoutY="106.0" prefHeight="264.0" prefWidth="358.0" styleClass="tarjeta">
+                    <children>
+                        <Label alignment="CENTER" prefWidth="322.0" styleClass="titulo-seccion" text="Vehículos registrados" />
+                        <TableView fx:id="tablaVehiculos" onMouseClicked="#cargarSeleccion" prefHeight="214.0" prefWidth="322.0">
+                            <columns>
+                                <TableColumn fx:id="colPlaca" prefWidth="62.0" text="Placa" />
+                                <TableColumn fx:id="colMarca" prefWidth="59.0" text="Marca" />
+                                <TableColumn fx:id="colTipo" prefWidth="59.0" text="Tipo" />
+                                <TableColumn fx:id="colKilometraje" prefWidth="68.0" text="Km" />
+                                <TableColumn fx:id="colEstado" prefWidth="70.0" text="Estado" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <HBox alignment="CENTER" layoutX="18.0" layoutY="403.0" prefHeight="36.0" prefWidth="724.0" spacing="12.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#limpiarVehiculo" styleClass="boton-limpiar" text="Limpiar" />
+                        <Button mnemonicParsing="false" onAction="#eliminarVehiculo" styleClass="boton-eliminar" text="Eliminar" />
+                        <Button mnemonicParsing="false" onAction="#editarVehiculo" styleClass="boton-editar" text="Editar" />
+                        <Button mnemonicParsing="false" onAction="#registrarVehiculo" styleClass="boton-registrar" text="Registrar" />
+                    </children>
+                </HBox>
+
+                <VBox layoutX="18.0" layoutY="436.0" prefHeight="136.0" prefWidth="724.0" spacing="10.0" styleClass="tarjeta">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefWidth="688.0" spacing="18.0">
+                            <children>
+                                <Label styleClass="titulo-seccion" text="Operaciones de flota" />
+                                <Label fx:id="lblMantenimiento" styleClass="estado-mantenimiento" text="Pendientes de mantenimiento: 0" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="72.0" prefWidth="688.0" spacing="8.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#iniciarRuta" styleClass="boton-ruta" text="Iniciar ruta">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" preserveRatio="true">
+                                            <image><Image url="@../assets/images/iniciar.png" /></image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#finalizarRuta" styleClass="boton-finalizar" text="Finalizar ruta">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" preserveRatio="true">
+                                            <image><Image url="@../assets/images/detener.png" /></image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#cargarMercancia" text="Cargar">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" preserveRatio="true">
+                                            <image><Image url="@../assets/images/cargar.png" /></image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#enviarMantenimiento" styleClass="boton-mantenimiento" text="Mantenimiento">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" preserveRatio="true">
+                                            <image><Image url="@../assets/images/mantenimiento.png" /></image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#atenderMantenimiento" text="Atender">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" preserveRatio="true">
+                                            <image><Image url="@../assets/images/atender.png" /></image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
